@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import StudentLists from "./StudentLists";
+import toast from "react-hot-toast";
 
 
 export const AdminDashboard = () => {
@@ -12,8 +13,15 @@ export const AdminDashboard = () => {
             e.preventDefault();
     }
      const handleAdd = () => {
-        const newStudent = {id: Date.now(), studentName, setStudentGrade};
+        if(!studentName || !studentGrade) {
+                toast.error("Please Add Student")
+                return
+        }
+        const newStudent = {id: Date.now(), studentName, studentGrade};
         setStudents([...students, newStudent])
+        setStudentGrade('')
+        setStudentName('')
+        toast.success("Procced Successed!")
             }
   return (
    <div className="max-w-7xl mx-auto pt-6">
@@ -32,7 +40,7 @@ export const AdminDashboard = () => {
    {
     students.map(student => (
         <div>
-            <StudentLists key={student} student={student} />
+            <StudentLists key={student} studentGrade={studentGrade} student={student} />
         </div>
     ))
    }

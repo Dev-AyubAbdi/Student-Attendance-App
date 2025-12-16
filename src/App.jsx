@@ -4,6 +4,7 @@ import { Header } from "./Components/Header";
 import { AdminDashboard } from "./Components/AdminDashboard";
 import { TeacherDashboard } from "./Components/TeacherDashboard";
 import { NewStudents } from "./Components/NewStudents";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/TeacherDashboard" element={<TeacherDashboard />} />
           <Route path="/NewStudents" element={<NewStudents />} />
         </Routes>
+        <Toaster />
       
     </>
   );
