@@ -1,39 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { NewStudents } from "./NewStudents";
-import { IoPersonAddOutline } from "react-icons/io5";
-import { FaBook } from "react-icons/fa";
-import { MdOutlineAttachMoney } from "react-icons/md";
-import { IoSettings } from "react-icons/io5";
+import React, { useState } from "react";
+
+import StudentLists from "./StudentLists";
+
 
 export const AdminDashboard = () => {
+    const [studentName, setStudentName] = React.useState("");
+    const [studentGrade, setStudentGrade] = useState('')
+    const [students, setStudents] = useState([])
+
+    const handleSubmit = (e) => {
+            e.preventDefault();
+    }
+     const handleAdd = () => {
+        const newStudent = {id: Date.now(), studentName, setStudentGrade};
+        setStudents([...students, newStudent])
+            }
   return (
-    <div>
-      <div className="flex space-x-10">
-        <div className="bg-blue-200 shadow w-70 h-screen">
-          <nav className="flex flex-col space-y-8 pt-20">
-            <Link className="pl-10 flex justify-center items-center space-x-2">
-              <IoPersonAddOutline size={20} />
-              New Students
-            </Link>
-             <Link className="pl-10 flex justify-center items-center space-x-2">
-              <FaBook size={20} />
-             Student Courses
-            </Link>
-             <Link className="pl-10 flex justify-center items-center space-x-2">
-              <MdOutlineAttachMoney size={20} />
-             Student Payment
-            </Link>
-             <Link className=" flex justify-center text-center items-center space-x-2">
-              <IoSettings size={20} />
-            Settings
-            </Link>
-          </nav>
+   <div className="max-w-7xl mx-auto pt-6">
+    <h2 className="text-2xl font-semibold text-blue-500">Students Registration</h2>
+   <form onSubmit={handleSubmit} className="mt-10">
+     <input type="text" placeholder="Enter Student Name.." className="w-full p-3 border border-blue-400 outline-0 text-lg rounded-lg mb-4"
+        value={studentName} onChange={(e)=> setStudentName(e.target.value)}
+     />
+        <input type="text" placeholder="Enter Student email.." className="w-full p-3 border border-blue-400 outline-0 text-lg rounded-lg pb-3"
+                value={studentGrade} onChange={(e)=> setStudentGrade(e.target.value)}
+        
+        />
+        <button type="submit" onClick={()=> handleAdd()} className="w-full mt-7 bg-blue-500 p-3 rounded-lg text-white text-lg">Add New Student</button>
+   </form>
+
+   {
+    students.map(student => (
+        <div>
+            <StudentLists key={student} student={student} />
         </div>
-        <div className="">
-          <NewStudents />
-        </div>
-      </div>
-    </div>
+    ))
+   }
+   </div>
   );
 };

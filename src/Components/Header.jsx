@@ -12,7 +12,7 @@ export const Header = () => {
       <nav className="space-x-6 pt-2">
         <Link to="/" className="text-lg font-semibol">Home</Link>
         <Link to="/adminDashboard" className="text-lg font-semibol">Admin Dashboard</Link>
-        <Link to="/teacherDashboard" className="text-lg font-semibol">TeacherDashboard</Link>
+        <Link to="/teacherDashboard" className="text-lg font-semibol">Teacher Dashboard</Link>
       </nav>
      </div>
     </div>
