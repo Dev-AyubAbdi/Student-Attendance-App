@@ -13,7 +13,7 @@ export default function ({ student, studentGrade }) {
   };
   return (
     <div>
-      <div className="flex justify-between border-b border-gray-200 mt-10 pb-4">
+      <div className="flex justify-between items-center border-b border-gray-200 mt-10 pb-4">
         <h2>{student.studentName}</h2>
         <p>{student.studentGrade}</p>
         <span className={`p-2 rounded-lg ${getBtnStyle(status)}`}>
