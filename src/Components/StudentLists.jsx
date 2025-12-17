@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-export default function ({ student, studentGrade }) {
+
+
+export default function ({ student }) {
   const [status, setStatus] = useState("pending");
 
   const getBtnStyle = (type) => {
@@ -40,6 +42,7 @@ export default function ({ student, studentGrade }) {
           </button>
         </div>
       </div>
+     
     </div>
   );
 }
