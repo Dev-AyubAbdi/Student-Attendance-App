@@ -28,11 +28,12 @@ export const StudentProvider = ({ children }) => {
   );
 };
 const useStudents = () => {
-    const context = useContext (StudentsContext) 
+  const context = useContext(StudentsContext);
 
-    if(!context === undefined) {
-        throw new error("use inside of context")
-    } return context
-}
+  if (!context === undefined) {
+    throw new error("use inside of context");
+  }
+  return context;
+};
 
-export default useStudents
+export default useStudents;

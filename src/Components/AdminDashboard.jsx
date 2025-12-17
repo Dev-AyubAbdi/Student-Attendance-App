@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import StudentLists from "./StudentLists";
-import toast from "react-hot-toast";
 import useStudents from "../Context/Students.Context";
+import toast from "react-hot-toast";
 
 export const AdminDashboard = () => {
   const { addNewStudents } = useStudents();
@@ -13,16 +13,32 @@ export const AdminDashboard = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-  const handleAdd = () => {
+    if (!studentName || !studentGrade) {
+      toast.error("Enter Student Data");
+      return;
+    }
     const newStudent = {
       id: Date.now(),
       studentName,
       studentGrade,
     };
+    toast.success("You're Data Succesfully");
+    setStudentGrade("");
+    setStudentName("");
+    const updateStudents = [...students, newStudent];
     addNewStudents(newStudent);
     setStudents([...students, newStudent]);
+
+    localStorage.setItem("students", JSON.stringify(updateStudents));
   };
+
+  useEffect(() => {
+    const savedStudents = JSON.parse(localStorage.getItem("students"));
+    if (savedStudents) {
+      setStudents(savedStudents);
+    }
+  }, []);
+
   return (
     <div className="max-w-7xl mx-auto pt-6">
       <h2 className="text-2xl font-semibold text-blue-500">
@@ -53,15 +69,18 @@ export const AdminDashboard = () => {
       </form>
       {/* <h2 className="mt-6 text-2xl font-bold text-blue-500">Total Students ({students.length})</h2> */}
       {students.length > 0 ? (
-        students.map((student) => (
-          <div>
+        <>
+          <h2 className="text-2xl mt-4 text-blue-500 font-semibold">
+            Total Students ({students.length})
+          </h2>
+          {students.map((student) => (
             <StudentLists
               key={student.id}
               studentGrade={studentGrade}
               student={student}
             />
-          </div>
-        ))
+          ))}
+        </>
       ) : (
         <h2 className="mt-6 text-2xl font-bold text-blue-500">
           We haven’t registered any students.

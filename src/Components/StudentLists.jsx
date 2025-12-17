@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 
-
-
 export default function ({ student }) {
   const [status, setStatus] = useState("pending");
-
   const getBtnStyle = (type) => {
     if (status === type) {
       if (type === "present") return "bg-green-500 text-white";
@@ -42,7 +39,6 @@ export default function ({ student }) {
           </button>
         </div>
       </div>
-     
     </div>
   );
 }
