@@ -26,7 +26,7 @@ export default function ({ student, setAbsent }) {
             Present
           </button>
           <button
-            onClick={()=> setStatus("Absent")}
+            onClick={()=> setStatus("absent")}
             className={`${getBtnStyle("absent")} p-2 rounded-lg`}
           >
             Absent
