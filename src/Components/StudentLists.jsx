@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function ({ student }) {
+export default function ({ student, setAbsent }) {
   const [status, setStatus] = useState("pending");
   const getBtnStyle = (type) => {
     if (status === type) {
@@ -26,13 +26,13 @@ export default function ({ student }) {
             Present
           </button>
           <button
-            onClick={() => setStatus("absent")}
+            onClick={()=> setStatus("Absent")}
             className={`${getBtnStyle("absent")} p-2 rounded-lg`}
           >
             Absent
           </button>
           <button
-            onClick={() => setStatus("late")}
+            onClick={() =>  setStatus("late")}
             className={`${getBtnStyle("late")} p-2 rounded-lg`}
           >
             Late

@@ -9,9 +9,9 @@ import { StudentsDashboard } from "./StudentsDashboard";
 export const TeacherDashboard = () => {
   const { Students } = useStudents();
   console.log(Students);
-  const [present, setPresent] = useState("");
-  const [absent, setAbsent] = useState("");
-  const [late, setLate] = useState("");
+  const [present, setPresent] = useState(0);
+  const [absent, setAbsent] = useState(0);
+  const [late, setLate] = useState(0);
  
 
   return (
@@ -33,7 +33,7 @@ export const TeacherDashboard = () => {
             />
             <div>
               <span className="text-2xl">Present Students</span>
-              <p className="text-center text-4xl font-semibold">20</p>
+              <p className="text-center text-4xl font-semibold">{present}</p>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ export const TeacherDashboard = () => {
             />
             <div>
               <span className="text-2xl">Absent Students</span>
-              <p className="text-center text-4xl font-semibold">20</p>
+              <p className="text-center text-4xl font-semibold">{absent}</p>
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@ export const TeacherDashboard = () => {
             />
             <div>
               <span className="text-2xl">Late Students</span>
-              <p className="text-center text-4xl font-semibold">20</p>
+              <p className="text-center text-4xl font-semibold">{late}</p>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ export const TeacherDashboard = () => {
               Attendance List
             </h2>
             {Students.map((student) => (
-             <StudentsDashboard  student={student}/>
+             <StudentsDashboard  student={student} setAbsent={setAbsent}/>
             ))}
           </>
         ) : (
