@@ -12,7 +12,7 @@ export const TeacherDashboard = () => {
   const [present, setPresent] = useState(0);
   const [absent, setAbsent] = useState(0);
   const [late, setLate] = useState(0);
- 
+
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -22,6 +22,7 @@ export const TeacherDashboard = () => {
           src="./src/assets/teacherImg.jpg"
           className="w-15 h-15 rounded-full border p-1 border-blue-400"
           alt=""
+        
         />
       </div>
       <div className="flex gap-10 mt-6">
