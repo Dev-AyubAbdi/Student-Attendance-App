@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
-export default function ({ student, setAbsent }) {
+import useStudents from "../Context/Students.Context";
+export default function ({ student, setStudents, students }) {
   const [status, setStatus] = useState("pending");
   const getBtnStyle = (type) => {
+    const {Students} = useStudents()
     if (status === type) {
       if (type === "present") return "bg-green-500 text-white";
       if (type === "absent") return "bg-red-500 text-white";
@@ -10,6 +11,12 @@ export default function ({ student, setAbsent }) {
     }
     return "bg-gray-200 text-black";
   };
+  const handleDelete = (id) => {
+    const UpdateStudents = students.filter(std => std.id !== id)
+    setStudents(UpdateStudents)
+
+    localStorage.setItem("students", JSON.stringify(UpdateStudents))
+  }
   return (
     <div>
       <div className="flex justify-between items-center border-b border-gray-200 mt-10 pb-4">
@@ -37,6 +44,7 @@ export default function ({ student, setAbsent }) {
           >
             Late
           </button>
+          <button onClick={()=> handleDelete(student.id)} className="bg-red-600 p-2 text-white font-semibold rounded-lg cursor-pointer">Delete</button>
         </div>
       </div>
     </div>

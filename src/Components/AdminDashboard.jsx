@@ -78,6 +78,8 @@ export const AdminDashboard = () => {
               key={student.id}
               studentGrade={studentGrade}
               student={student}
+              setStudents={setStudents}
+              students={students}
             />
           ))}
         </>
