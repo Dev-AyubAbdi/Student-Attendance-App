@@ -13,7 +13,11 @@ export default function ({ student, setStudents, students }) {
   };
   const handleDelete = (id) => {
     const UpdateStudents = students.filter(std => std.id !== id)
-    setStudents(UpdateStudents)
+    if(UpdateStudents) {
+      alert("Are you sure you want to delete this student?")
+      setStudents(UpdateStudents)
+    }
+    
 
     localStorage.setItem("students", JSON.stringify(UpdateStudents))
   }
