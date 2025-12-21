@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { CiTimer } from "react-icons/ci";
+import { TbLogout2 } from "react-icons/tb";
+import { Link } from "react-router-dom";
+
 
 import useStudents from "../Context/Students.Context";
 import { StudentsDashboard } from "./StudentsDashboard";
+
 
 export const TeacherDashboard = () => {
   const { Students } = useStudents();
@@ -18,13 +22,16 @@ export const TeacherDashboard = () => {
     <div className="max-w-7xl mx-auto">
       <div className="flex justify-self-end items-center mt-5">
         <span className="pr-3 font-semibold">Welcome, Teacher!</span>
+      
         <img
           src="./src/assets/teacherImg.jpg"
           className="w-15 h-15 rounded-full border p-1 border-blue-400"
           alt=""
         
         />
+        
       </div>
+      <Link to={"/adminDashboard"} className="flex justify-end-safe text-center items-center text-2xl text-blue-500 mt-4" ><TbLogout2/>LogOut</Link>
       <div className="flex gap-10 mt-6">
         <div className="bg-green-400 w-100 p-5 rounded-lg text-white ">
           <div className="pl-4 flex items-center">
