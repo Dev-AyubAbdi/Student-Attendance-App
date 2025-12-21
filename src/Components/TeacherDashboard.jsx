@@ -68,6 +68,7 @@ export const TeacherDashboard = () => {
       <div>
         {Students.length > 0 ? (
           <>
+          <h2 className="text-blue-500 text-2xl font-bold mt-10">Total Students ({Students.length})</h2>
             <h2 className="text-blue-500 text-3xl font-bold mt-10">
               Attendance List
             </h2>
